@@ -68,7 +68,7 @@ function run(;α=.01, k=10, nsamples=10000, seed=1)
     # o = PauliBoolVec(N, Z=[1,2,3,4])
     # o = PauliBoolVec(N, Y=[1], Z=[2,3,4])
     # o = PauliBoolVec(N, Z=[1,30])
-    o = PauliBoolVec(N, Z=[1])
+    o = PauliBoolVec(N, Z=[8,12,17,28,32])
 
 
     ket = zeros(Bool, N)

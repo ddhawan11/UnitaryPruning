@@ -175,7 +175,7 @@ function iterate_dfs!(ref_state, o::P, h::T, ansatz_ops::Vector{P},
 
     my_energy::Vector{T} = [0.0]
     my_paths::Vector{Int} = [0, 0]
-    
+    print(ansatz_par)
     my_gradient = deepcopy(ansatz_par)
     fill!(my_gradient, zero(0))
 
