@@ -19,7 +19,7 @@ function run(; N=6)
 #    o = Pauli(N, X=[14,30,32], Y=[10,31], Z=[9,13,18,29,33])
 #    o = Pauli(N, Z=[2,5,7,8], Y=[1,3,4])
     o = Pauli(N, X=[14,30,32], Y=[10,31], Z=[9,13,18,29,33])
-
+    
     angles = zeros(Float64,17)
     e = zeros(ComplexF64,17)
     for i in [(i-1)*2 for i in 1:17]
@@ -30,9 +30,10 @@ function run(; N=6)
         α = i * π / 32
         generators, parameters = UnitaryPruning.eagle_processor(o, α=α, k=5)
         angles[Int(i/2)+1] = α
-        
+        println(size(parameters))
+        exit()
         # ei , nops = UnitaryPruning.deterministic_pauli_rotations(generators, parameters, o, ket, thres=1e-3)
-        ei , nops = UnitaryPruning.bfs_evolution(generators, parameters, PauliSum(o), ket, thresh=1e-3)
+        ei , nops = UnitaryPruning.bfs_evolution(generators, parameters, PauliSum(o), thresh=1e-3)
        
         e[Int(i/2)+1] += ei
         # @printf(" α: %6.4f e: %12.8f+%12.8fi\n", α, real(e[Int(i/2)+1]), imag(e[Int(i/2)+1]))
